@@ -1,21 +1,19 @@
-
-
 export const navData = [
   {
     name: "Home",
-    link:"#home"
+    link: "Home",
   },
   {
     name: "Projects",
-     link:"#projects"
+    link: "Projects",
   },
- 
+
   {
     name: "About me",
-     link:"#aboutme"
+    link: "Aboutme",
   },
   {
     name: "Contact",
-     link:"#contact"
+    link: "Contact",
   },
 ];

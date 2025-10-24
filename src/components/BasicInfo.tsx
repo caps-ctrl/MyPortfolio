@@ -6,11 +6,11 @@ import { SocialButtons } from "./ui/SocialButtons";
 
 const BasicInfo = () => {
   const handleDownload = () => {
-    const link = document.createElement("a")
-    link.href = "/Marcel_Gusiew_CV.pdf"
-    link.download = "CV_Marcel_Gusiew.pdf"
-    link.click()
-  }
+    const link = document.createElement("a");
+    link.href = "/Marcel_Gusiew_CV.pdf";
+    link.download = "CV_Marcel_Gusiew.pdf";
+    link.click();
+  };
   return (
     <div>
       <h1 className="text-white text-6xl font-bold  tracking-tight">
@@ -32,7 +32,9 @@ const BasicInfo = () => {
       </div>
       <div className="flex gap-4 px-4 py-5">
         <Button variant="nav">Projects</Button>
-        <Button variant="nav" onClick={handleDownload}>My resume</Button>
+        <Button variant="nav" onClick={handleDownload}>
+          My resume
+        </Button>
         <SocialButtons />
       </div>
     </div>

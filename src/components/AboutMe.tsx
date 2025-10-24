@@ -5,7 +5,6 @@ import React from "react";
 const AboutMe: React.FC = () => {
   return (
     <section className="relative bg-black text-white py-20 px-6 md:px-20 overflow-hidden">
-      
       {/* Dekoracyjne żółte punkty */}
       <motion.div
         className="absolute top-0 left-0 w-1 h-1 bg-yellow-500 rounded-full animate-bounce opacity-20"
@@ -40,11 +39,21 @@ const AboutMe: React.FC = () => {
         transition={{ duration: 1.5 }}
       >
         <p>
-          My name is <span className="text-yellow-500 font-semibold">Marcel</span>, I am a 19-year-old Polish student of Computer Science at <span className="text-yellow-500 font-semibold">ZUT in Szczecin</span> and a passionate programmer. I learn quickly and I am determined to work hard to achieve success.
+          My name is{" "}
+          <span className="text-yellow-500 font-semibold">Marcel</span>, I am a
+          19-year-old Polish student of Computer Science at{" "}
+          <span className="text-yellow-500 font-semibold">ZUT in Szczecin</span>{" "}
+          and a passionate programmer. I learn quickly and I am determined to
+          work hard to achieve success.
         </p>
 
         <p>
-          I love solving challenging development problems and learning new things every day. Currently, I am focused on becoming a <span className="text-yellow-500 font-semibold">fullstack developer</span> and exploring new technologies that dominate the IT market.
+          I love solving challenging development problems and learning new
+          things every day. Currently, I am focused on becoming a{" "}
+          <span className="text-yellow-500 font-semibold">
+            fullstack developer
+          </span>{" "}
+          and exploring new technologies that dominate the IT market.
         </p>
 
         <p>
@@ -62,7 +71,9 @@ const AboutMe: React.FC = () => {
         </p>
 
         <p>
-          I combine my studies, programming passion, and personal interests to continuously improve myself and contribute effectively to projects. Hard work, curiosity, and determination are my main strengths.
+          I combine my studies, programming passion, and personal interests to
+          continuously improve myself and contribute effectively to projects.
+          Hard work, curiosity, and determination are my main strengths.
         </p>
       </motion.div>
     </section>
