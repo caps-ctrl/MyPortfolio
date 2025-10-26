@@ -10,7 +10,7 @@ export const navData = [
 
   {
     name: "About me",
-    link: "Aboutme",
+    link: "About me",
   },
   {
     name: "Contact",

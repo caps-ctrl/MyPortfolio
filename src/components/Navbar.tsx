@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { navData } from "../data/navData";
 
@@ -54,13 +54,16 @@ export const Navbar = () => {
           Marcel Gusiew
         </h1>
 
-        <ul className="flex gap-6 text-yellow-500 font-bold">
+        <ul className={activeSection === "About me" || activeSection === "Contact" 
+  ? "flex gap-6 text-emerald-300 transition-colors font-bold" 
+  : "flex gap-6 transition-colors text-yellow-500 font-bold"}
+>
           {navData.map((nav) => (
             <a key={nav.name} href={`#${nav.link}`}>
               <li className="relative cursor-pointer">
                 {nav.name}
                 <motion.span
-                  className="absolute left-0 -bottom-1 h-[3px] bg-yellow-500"
+                  className={activeSection === "About me" || activeSection === "Contact"? "bg-emerald-300 absolute left-0 -bottom-1 h-[3px] " : "bg-yellow-500 absolute left-0 -bottom-1 h-[3px] "}
                   initial={{ width: 0 }}
                   animate={
                     activeSection === nav.name

@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, useRoutes } from "react-router-dom";
 import LoadingScreen from "./components/LoadingScreen";
 import RootLayout from "./Layout/RootLayout";
+import Docs from "./pages/DocsPage";
 
 // Lazy load stron
 const Home = lazy(() => import("./pages/Home"));
@@ -11,7 +12,10 @@ const AppRoutes = () => {
     {
       path: "/",
       element: <RootLayout />,
-      children: [{ path: "/", element: <Home /> }],
+      children: [{ path: "/", element: <Home /> },{
+        path:"docs",
+        element:<Docs/>
+      }],
     },
   ]);
 

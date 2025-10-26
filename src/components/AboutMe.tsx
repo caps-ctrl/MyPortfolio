@@ -4,7 +4,10 @@ import React from "react";
 
 const AboutMe: React.FC = () => {
   return (
-    <section className="relative bg-black text-white py-20 px-6 md:px-20 overflow-hidden">
+ 
+    <section
+      style={{ boxShadow: "0 10px 20px -5px #34D399" }}
+    className="relative bg-black b-bottom border-emerald-300 text-white py-20 px-6 md:px-20 overflow-hidden">
       {/* Dekoracyjne żółte punkty */}
       <motion.div
         className="absolute top-0 left-0 w-1 h-1 bg-yellow-500 rounded-full animate-bounce opacity-20"
@@ -23,7 +26,7 @@ const AboutMe: React.FC = () => {
 
       {/* Nagłówek */}
       <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center text-yellow-500 mb-10"
+        className="text-4xl md:text-5xl font-bold  text-center text-emerald-300 mb-10"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -33,16 +36,16 @@ const AboutMe: React.FC = () => {
 
       {/* Tekst */}
       <motion.div
-        className="max-w-4xl mx-auto text-lg md:text-xl space-y-6 leading-relaxed"
+        className="max-w-4xl mx-auto text-lg md:text-xl  space-y-6 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
         <p>
           My name is{" "}
-          <span className="text-yellow-500 font-semibold">Marcel</span>, I am a
+          <span className="text-emerald-300 font-semibold">Marcel</span>, I am a
           19-year-old Polish student of Computer Science at{" "}
-          <span className="text-yellow-500 font-semibold">ZUT in Szczecin</span>{" "}
+          <span className="text-emerald-300 font-semibold">ZUT in Szczecin</span>{" "}
           and a passionate programmer. I learn quickly and I am determined to
           work hard to achieve success.
         </p>
@@ -50,7 +53,7 @@ const AboutMe: React.FC = () => {
         <p>
           I love solving challenging development problems and learning new
           things every day. Currently, I am focused on becoming a{" "}
-          <span className="text-yellow-500 font-semibold">
+          <span className="text-emerald-300 font-semibold">
             fullstack developer
           </span>{" "}
           and exploring new technologies that dominate the IT market.
@@ -64,9 +67,9 @@ const AboutMe: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <FaBasketballBall className="text-yellow-500 text-2xl animate-bounce" />
-            <FaGamepad className="text-yellow-500 text-2xl animate-bounce" />
-            <FaDumbbell className="text-yellow-500 text-2xl animate-bounce" />
+            <FaBasketballBall className="text-emerald-300 text-2xl animate-bounce" />
+            <FaGamepad className="text-emerald-300 text-2xl animate-bounce" />
+            <FaDumbbell className="text-emerald-300 text-2xl animate-bounce" />
           </motion.span>
         </p>
 
@@ -76,7 +79,10 @@ const AboutMe: React.FC = () => {
           Hard work, curiosity, and determination are my main strengths.
         </p>
       </motion.div>
+    
     </section>
+   
+    
   );
 };
 
