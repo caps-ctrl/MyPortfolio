@@ -1,14 +1,9 @@
-import { docsData, sidebarData } from "@/data/DocsData";
+import { sidebarData, fixData } from "@/data/DocsData";
 import { NavLink } from "react-router-dom";
 
-
 const DocsPage = () => {
-
-
-  
-
   return (
-    <div className="flex bg-gray-800 pt-10 justify-between w-screen text-white">
+    <div className="flex bg-gray-800 pt-10 justify-evenly w-screen text-white">
       {/* Sidebar */}
       <aside
         style={{ boxShadow: "0 2px 20px -2px #34D399" }}
@@ -24,10 +19,7 @@ const DocsPage = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={
-                  
-                       "hover:text-emerald-300 transition-colors"
-                  }
+                  className={"hover:text-emerald-300 transition-colors"}
                 >
                   {link.name}
                 </a>
@@ -36,7 +28,7 @@ const DocsPage = () => {
           </div>
         ))}
 
-        <NavLink to={"/"} className="mt-4">
+        <NavLink to={"/"} className="mt-4 flex justify-center">
           <button className="relative px-6 cursor-pointer py-3 font-semibold text-black bg-emerald-300 rounded-lg overflow-hidden group hover:text-white transition-all duration-300">
             <span className="absolute inset-0 bg-emerald-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
             <span className="relative z-10">Home Page</span>
@@ -49,24 +41,29 @@ const DocsPage = () => {
       </aside>
 
       {/* Main Content */}
-      <div className="h-screen w-[70%] overflow-y-auto scrollbar-thin scrollbar-thumb-emerald-300 scrollbar-track-gray-800 scroll-smooth pr-4">
-        <div className="max-w-[70%]">
-          {docsData.map((section) => (
-            <section
-              key={section.id}
-              id={section.id}
-              className="scroll-mt-24 py-4 flex-col"
-            >
-              <h2
-                className={"text-3xl font-bold mb-4 text-emerald-300"
-                }
-              >
-                {section.title}
-              </h2>
-              <p className="text-gray-400 leading-relaxed">
-                {section.content}
-              </p>
-            </section>
+      <div className="h-screen w-[60%] overflow-y-auto scrollbar-thin scrollbar-thumb-emerald-300 scrollbar-track-gray-800 scroll-smooth pr-4">
+        <div className="max-w-[90%`]">
+          {fixData.map((S) => (
+            <div>
+              {" "}
+              <h1 className="text-center border-b border-t  border-white text-4xl p-4  font-bold text-emerald-200">
+                {S.title}
+              </h1>
+              {S.link.map((section) => (
+                <section
+                  key={section.id}
+                  id={section.id}
+                  className="scroll-mt-24 py-4 flex-col"
+                >
+                  <h2 className={"text-3xl font-bold mb-4 text-emerald-300"}>
+                    {section.title}
+                  </h2>
+                  <p className="text-gray-400 leading-relaxed">
+                    {section.content}
+                  </p>
+                </section>
+              ))}
+            </div>
           ))}
         </div>
       </div>

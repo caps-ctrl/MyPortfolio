@@ -6,42 +6,45 @@ const AboutMe = React.lazy(() => import("@/components/AboutMe"));
 const Contact = React.lazy(() => import("@/components/Contact"));
 const Skills = React.lazy(() => import("@/components/Skills"));
 import { Navbar } from "@/components/Navbar";
+import Footer from "@/components/Footer";
 const Home = () => {
   return (
     <>
       <div className="fixed top-0 z-20 w-full">
         <Navbar />
       </div>
-    <div className="relative min-h-screen flex  overflow-x-hidden flex-col">
-      <div className="absolute inset-0 -z-10">
-        <div className="w-full h-full">
-          <Galaxy />
-        </div>{" "}
-      </div>
-
-      <main>
-        <div>
-          <div
-            id="Home"
-            className="flex justify-evenly h-[70vh] items-center  p-10"
-          >
-            <BasicInfo />
-          </div>
+      <div className="relative min-h-screen flex  overflow-x-hidden flex-col">
+        <div className="absolute inset-0 -z-10">
+          <div className="w-full h-full">
+            <Galaxy />
+          </div>{" "}
         </div>
-        <section id="Projects">
-          <PurpleLine />
-        </section>
-        <section id="Skills">
-          <Skills />
-        </section>
-        <section id="About me">
-           <AboutMe />  
-        </section>
-        <section id="Contact">
-          <Contact />
-        </section>
-      </main>
-    </div></>
+
+        <main>
+          <div>
+            <div
+              id="Home"
+              className="flex justify-evenly h-[70vh] items-center  p-10"
+            >
+              <BasicInfo />
+            </div>
+          </div>
+          <section id="Projects">
+            <PurpleLine />
+          </section>
+          <section id="Skills">
+            <Skills />
+          </section>
+          <section id="About me">
+            <AboutMe />
+          </section>
+          <section id="Contact">
+            <Contact />
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 
