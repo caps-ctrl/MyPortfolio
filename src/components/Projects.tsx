@@ -9,14 +9,16 @@ const Projects = () => {
 
   return (
     <div className="text-white">
-      <TrueFocus
-        sentence="My Projects"
-        manualMode={false}
-        blurAmount={5}
-        borderColor="yellow"
-        animationDuration={2}
-        pauseBetweenAnimations={1}
-      />
+      <div className="p-10">
+        <TrueFocus
+          sentence="My Projects"
+          manualMode={false}
+          blurAmount={5}
+          borderColor="yellow"
+          animationDuration={2}
+          pauseBetweenAnimations={1}
+        />
+      </div>
       <section className="text-white  flex flex-col items-center py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {projects.Projects.map((project, index) => (

@@ -18,6 +18,9 @@ export interface Project {
     | "React Hook Form"
     | "local Storage"
     | "FETCH"
+    | "Next.js API Routes"
+    | "Prisma"
+    | "PostgreSQL"
   )[];
   GitHub: string;
 }
@@ -30,31 +33,32 @@ export const projects: ProjectState = {
   Projects: [
     {
       id: 1,
-      title: "To Do App",
-      Photo: "ToDoApp.png",
-      PhotoDark: "ToDoApp.png",
-
-      link: "https://to-do-9b2rdn60i-marcels-projects-c19c1f57.vercel.app/",
+      title: "AI Notes",
+      Photo: "ainotes.jpg",
+      PhotoDark: "AiNotesDark.png",
+      link: "https://ainote-nu.vercel.app",
       description:
-        "Aplikacja To-Do  zarządzana globalnie za pomocą Redux, z interfejsem opartym na komponentach shadcn.",
+        "AI Notes is an intelligent notebook powered by artificial intelligence that helps users organize ideas, generate content, and analyze text in real time.",
       technologies: [
         "React",
-        "Redux Toolkit",
-        "shadcn/ui",
-        "TailwindCSS",
         "TypeScript",
+        "TailwindCSS",
+        "shadcn/ui",
+        "Framer Motion",
+        "Zod",
+        "React Hook Form",
+        "Next.js API Routes",
       ],
-      GitHub: "https://github.com/caps-ctrl/ToDoApp",
+      GitHub: "https://github.com/caps-ctrl/ainotes",
     },
     {
       id: 2,
-      title: "Quiz-app",
+      title: "Quiz App",
       Photo: "Quizphoto.png",
       PhotoDark: "QuizphotoDark.png",
-
       link: "https://quizgame-blue.vercel.app/",
       description:
-        " Quiz pobierający pytania z API, zapisujący wyniki w localStorage i zarządzany globalnie za pomocą React Context API.",
+        "Quiz fetching dynamic questions from an API, saving scores to localStorage and managing state globally via React Context API.",
       technologies: [
         "React",
         "TailwindCSS",
@@ -69,13 +73,12 @@ export const projects: ProjectState = {
     },
     {
       id: 3,
-      title: "e-comerceShop",
+      title: "E-Commerce Shop",
       Photo: "EComerceShop.png",
       PhotoDark: "EComerceShopDark.png",
-
       link: "https://moje-cv-ecomerceshop.vercel.app/",
       description:
-        "Strona e-commerce z możliwością przeglądania produktów z globalnym stanem zarządzanym za pomocą Redux",
+        "E-commerce platform with product browsing, global state via Redux, and fully functional backend handling authentication, database operations, and product management using Next.js API Routes, Prisma, and PostgreSQL.",
       technologies: [
         "React",
         "Redux Toolkit",
@@ -85,6 +88,9 @@ export const projects: ProjectState = {
         "Zod",
         "React Hook Form",
         "React Router",
+        "Next.js API Routes",
+        "Prisma",
+        "PostgreSQL",
       ],
       GitHub: "https://github.com/caps-ctrl/eComerceShop",
     },

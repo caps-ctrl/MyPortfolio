@@ -45,7 +45,6 @@ const DocsPage = () => {
         <div className="max-w-[90%`]">
           {fixData.map((S) => (
             <div>
-              {" "}
               <h1 className="text-center border-b border-t  border-white text-4xl p-4  font-bold text-emerald-200">
                 {S.title}
               </h1>
@@ -61,6 +60,9 @@ const DocsPage = () => {
                   <p className="text-gray-400 leading-relaxed">
                     {section.content}
                   </p>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: section.example || "" }}
+                  />
                 </section>
               ))}
             </div>

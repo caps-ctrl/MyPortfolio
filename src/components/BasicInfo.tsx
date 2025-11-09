@@ -13,7 +13,7 @@ const BasicInfo = () => {
   };
   return (
     <div>
-      <h1 className="text-white text-6xl font-bold  tracking-tight">
+      <h1 className="text-white text-6xl font-bold   tracking-tight">
         Full Stack <br />{" "}
         <span className="text-yellow-500 text-7xl ">Developer</span>
       </h1>

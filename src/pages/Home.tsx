@@ -1,6 +1,6 @@
 import React from "react";
 const BasicInfo = React.lazy(() => import("../components/BasicInfo"));
-const Galaxy = React.lazy(() => import("@/components/Galaxy"));
+import Galaxy from "@/components/Galaxy";
 const PurpleLine = React.lazy(() => import("@/components/ui/PurpleLine"));
 const AboutMe = React.lazy(() => import("@/components/AboutMe"));
 const Contact = React.lazy(() => import("@/components/Contact"));
