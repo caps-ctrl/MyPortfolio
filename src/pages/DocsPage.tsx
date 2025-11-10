@@ -1,6 +1,6 @@
 import { sidebarData, fixData } from "@/data/DocsData";
 import { NavLink } from "react-router-dom";
-
+import { CodeBlock } from "@/components/CodeBlock";
 const DocsPage = () => {
   return (
     <div className="flex bg-gray-800 pt-10 justify-evenly w-screen text-white">
@@ -60,9 +60,9 @@ const DocsPage = () => {
                   <p className="text-gray-400 leading-relaxed">
                     {section.content}
                   </p>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: section.example || "" }}
-                  />
+                  {section.example && (
+                    <CodeBlock codeString={section.example} />
+                  )}
                 </section>
               ))}
             </div>
