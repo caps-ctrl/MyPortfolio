@@ -13,7 +13,7 @@ export interface Project {
     | "TailwindCSS"
     | "shadcn/ui"
     | "Framer Motion"
-    | "Vitest testy jednostkowe"
+    | "Vitest unit test"
     | "Zod"
     | "React Hook Form"
     | "local Storage"
@@ -21,6 +21,7 @@ export interface Project {
     | "Next.js API Routes"
     | "Prisma"
     | "PostgreSQL"
+    | "Node.js"
   )[];
   GitHub: string;
 }
@@ -56,18 +57,20 @@ export const projects: ProjectState = {
       title: "Quiz App",
       Photo: "Quizphoto.png",
       PhotoDark: "QuizphotoDark.png",
-      link: "https://quizgame-blue.vercel.app/",
+      link: "https://quizgame-seven-omega.vercel.app",
       description:
-        "Quiz fetching dynamic questions from an API, saving scores to localStorage and managing state globally via React Context API.",
+        "A quiz fetching dynamic questions from an API, saving scores to a database, and managing state globally via the React Context API.",
       technologies: [
         "React",
         "TailwindCSS",
         "TypeScript",
-        "Vitest testy jednostkowe",
+        "Vitest unit test",
         "FETCH",
         "local Storage",
         "Framer Motion",
         "React Router",
+        "Node.js",
+        "PostgreSQL",
       ],
       GitHub: "https://github.com/caps-ctrl/quizgame",
     },
@@ -88,7 +91,7 @@ export const projects: ProjectState = {
         "Zod",
         "React Hook Form",
         "React Router",
-        "Next.js API Routes",
+        "Node.js",
         "Prisma",
         "PostgreSQL",
       ],
