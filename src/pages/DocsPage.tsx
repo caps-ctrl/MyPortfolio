@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { CodeBlock } from "@/components/CodeBlock";
 const DocsPage = () => {
   return (
-    <div className="flex bg-gray-800 pt-10 justify-evenly w-screen text-white">
+    <div className="flex bg-gray-800 pt-10 justify-evenly  text-white">
       {/* Sidebar */}
       <aside
         style={{ boxShadow: "0 2px 20px -2px #34D399" }}
