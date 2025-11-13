@@ -7,14 +7,15 @@ const Contact = React.lazy(() => import("@/components/Contact"));
 const Skills = React.lazy(() => import("@/components/Skills"));
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
 const Home = () => {
   return (
     <>
       <div className="fixed top-0 z-20 w-full">
         <Navbar />
       </div>
-      <div className="relative min-h-screen flex  overflow-x-hidden flex-col">
-        <div className="absolute inset-0 -z-10">
+      <div className="relative min-h-screen flex  overflow-y-hidden overflow-x-hidden flex-col">
+        <div className="fixed inset-0 -z-10">
           <div className="w-full h-full">
             <Galaxy />
           </div>{" "}
@@ -24,7 +25,7 @@ const Home = () => {
           <div>
             <div
               id="Home"
-              className="flex justify-evenly h-[70vh] items-center  p-10"
+              className="flex justify-evenly h-[70vh] items-center p-10"
             >
               <BasicInfo />
             </div>
