@@ -194,7 +194,7 @@ export default function Galaxy({
   rotation = [1.0, 0.0],
   starSpeed = 0.2,
   density = 0.2,
-  hueShift = 140,
+  hueShift = 20,
   disableAnimation = false,
   speed = 1.0,
   mouseInteraction = true,

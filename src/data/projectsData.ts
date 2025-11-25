@@ -37,7 +37,7 @@ export const projects: ProjectState = {
       title: "AI Notes",
       Photo: "ainotes.jpg",
       PhotoDark: "AiNotesDark.png",
-      link: "https://ainote-nu.vercel.app",
+      link: "https://ainote-wine.vercel.app/",
       description:
         "AI Notes is an intelligent notebook powered by artificial intelligence that helps users organize ideas, generate content, and analyze text in real time.",
       technologies: [
