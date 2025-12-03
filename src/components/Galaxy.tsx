@@ -83,7 +83,6 @@ float Star(vec2 uv, float flare) {
 
 vec3 StarLayer(vec2 uv) {
   vec3 col = vec3(0.0);
-
   vec2 gv = fract(uv) - 0.5; 
   vec2 id = floor(uv);
 
@@ -110,13 +109,11 @@ vec3 StarLayer(vec2 uv) {
       vec2 pad = vec2(tris(seed * 34.0 + uTime * uSpeed / 10.0), tris(seed * 38.0 + uTime * uSpeed / 30.0)) - 0.5;
 
       float star = Star(gv - offset - pad, flareSize);
-      vec3 color = base;
-
       float twinkle = trisn(uTime * uSpeed + seed * 6.2831) * 0.5 + 1.0;
       twinkle = mix(1.0, twinkle, uTwinkleIntensity);
       star *= twinkle;
-      
-      col += star * size * color;
+
+      col += star * size * base;
     }
   }
 
@@ -126,22 +123,17 @@ vec3 StarLayer(vec2 uv) {
 void main() {
   vec2 focalPx = uFocal * uResolution.xy;
   vec2 uv = (vUv * uResolution.xy - focalPx) / uResolution.y;
-
   vec2 mouseNorm = uMouse - vec2(0.5);
   
   if (uAutoCenterRepulsion > 0.0) {
-    vec2 centerUV = vec2(0.0, 0.0);
-    float centerDist = length(uv - centerUV);
-    vec2 repulsion = normalize(uv - centerUV) * (uAutoCenterRepulsion / (centerDist + 0.1));
+    vec2 repulsion = normalize(uv) * (uAutoCenterRepulsion / (length(uv) + 0.1));
     uv += repulsion * 0.05;
   } else if (uMouseRepulsion) {
     vec2 mousePosUV = (uMouse * uResolution.xy - focalPx) / uResolution.y;
-    float mouseDist = length(uv - mousePosUV);
-    vec2 repulsion = normalize(uv - mousePosUV) * (uRepulsionStrength / (mouseDist + 0.1));
+    vec2 repulsion = normalize(uv - mousePosUV) * (uRepulsionStrength / (length(uv - mousePosUV) + 0.1));
     uv += repulsion * 0.05 * uMouseActiveFactor;
   } else {
-    vec2 mouseOffset = mouseNorm * 0.1 * uMouseActiveFactor;
-    uv += mouseOffset;
+    uv += mouseNorm * 0.1 * uMouseActiveFactor;
   }
 
   float autoRotAngle = uTime * uRotationSpeed;
@@ -151,7 +143,6 @@ void main() {
   uv = mat2(uRotation.x, -uRotation.y, uRotation.y, uRotation.x) * uv;
 
   vec3 col = vec3(0.0);
-
   for (float i = 0.0; i < 1.0; i += 1.0 / NUM_LAYER) {
     float depth = fract(i + uStarSpeed * uSpeed);
     float scale = mix(20.0 * uDensity, 0.5 * uDensity, depth);
@@ -160,9 +151,7 @@ void main() {
   }
 
   if (uTransparent) {
-    float alpha = length(col);
-    alpha = smoothstep(0.0, 0.3, alpha);
-    alpha = min(alpha, 1.0);
+    float alpha = min(1.0, smoothstep(0.0, 0.3, length(col)));
     gl_FragColor = vec4(col, alpha);
   } else {
     gl_FragColor = vec4(col, 1.0);
@@ -213,6 +202,7 @@ export default function Galaxy({
   const smoothMousePos = useRef({ x: 0.5, y: 0.5 });
   const targetMouseActive = useRef(0.0);
   const smoothMouseActive = useRef(0.0);
+  const boundingRect = useRef<DOMRect | null>(null);
 
   useEffect(() => {
     if (!ctnDom.current) return;
@@ -234,17 +224,22 @@ export default function Galaxy({
     let program: Program;
 
     function resize() {
-      const scale = 1;
-      renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
-      if (program) {
-        program.uniforms.uResolution.value = new Color(
-          gl.canvas.width,
-          gl.canvas.height,
-          gl.canvas.width / gl.canvas.height
-        );
-      }
+      requestAnimationFrame(() => {
+        if (!ctn) return;
+        const rect = ctn.getBoundingClientRect();
+        boundingRect.current = rect;
+        renderer.setSize(rect.width, rect.height);
+        if (program) {
+          program.uniforms.uResolution.value = new Color(
+            rect.width,
+            rect.height,
+            rect.width / rect.height
+          );
+        }
+      });
     }
-    window.addEventListener("resize", resize, false);
+
+    window.addEventListener("resize", resize);
     resize();
 
     const geometry = new Triangle(gl);
@@ -255,9 +250,9 @@ export default function Galaxy({
         uTime: { value: 0 },
         uResolution: {
           value: new Color(
-            gl.canvas.width,
-            gl.canvas.height,
-            gl.canvas.width / gl.canvas.height
+            ctn.offsetWidth,
+            ctn.offsetHeight,
+            ctn.offsetWidth / ctn.offsetHeight
           ),
         },
         uFocal: { value: new Float32Array(focal) },
@@ -285,8 +280,9 @@ export default function Galaxy({
     });
 
     const mesh = new Mesh(gl, { geometry, program });
-    let animateId: number;
+    ctn.appendChild(gl.canvas);
 
+    let animateId: number;
     function update(t: number) {
       animateId = requestAnimationFrame(update);
       if (!disableAnimation) {
@@ -299,7 +295,6 @@ export default function Galaxy({
         (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor;
       smoothMousePos.current.y +=
         (targetMousePos.current.y - smoothMousePos.current.y) * lerpFactor;
-
       smoothMouseActive.current +=
         (targetMouseActive.current - smoothMouseActive.current) * lerpFactor;
 
@@ -310,12 +305,14 @@ export default function Galaxy({
       renderer.render({ scene: mesh });
     }
     animateId = requestAnimationFrame(update);
-    ctn.appendChild(gl.canvas);
 
     function handleMouseMove(e: MouseEvent) {
-      const rect = ctn.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = 1.0 - (e.clientY - rect.top) / rect.height;
+      if (!boundingRect.current) return;
+      const x =
+        (e.clientX - boundingRect.current.left) / boundingRect.current.width;
+      const y =
+        1.0 -
+        (e.clientY - boundingRect.current.top) / boundingRect.current.height;
       targetMousePos.current = { x, y };
       targetMouseActive.current = 1.0;
     }
