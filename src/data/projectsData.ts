@@ -35,8 +35,8 @@ export const projects: ProjectState = {
     {
       id: 1,
       title: "AI Notes",
-      Photo: "ainotes.jpg",
-      PhotoDark: "AiNotesDark.png",
+      Photo: "ainotes.jpg?w=662&format=webp",
+      PhotoDark: "AiNotesDark.png?w=662&format=webp",
       link: "https://ainote-wine.vercel.app/",
       description:
         "AI Notes is an intelligent notebook powered by artificial intelligence that helps users organize ideas, generate content, and analyze text in real time.",
@@ -55,8 +55,8 @@ export const projects: ProjectState = {
     {
       id: 2,
       title: "Quiz App",
-      Photo: "Quizphoto.png",
-      PhotoDark: "QuizphotoDark.png",
+      Photo: "Quizphoto.png?w=662&format=webp",
+      PhotoDark: "QuizphotoDark.png?w=662&format=webp",
       link: "https://quizgame-seven-omega.vercel.app",
       description:
         "A quiz fetching dynamic questions from an API, saving scores to a database, and managing state globally via the React Context API.",
@@ -77,8 +77,8 @@ export const projects: ProjectState = {
     {
       id: 3,
       title: "E-Commerce Shop",
-      Photo: "EComerceShop.png",
-      PhotoDark: "EComerceShopDark.png",
+      Photo: "EComerceShop.png?w=662&format=webp",
+      PhotoDark: "EComerceShopDark.png?w=662&format=webp",
       link: "https://moje-cv-ecomerceshop.vercel.app/",
       description:
         "E-commerce platform with product browsing, global state via Redux, and fully functional backend handling authentication, database operations, and product management using Next.js API Routes, Prisma, and PostgreSQL.",

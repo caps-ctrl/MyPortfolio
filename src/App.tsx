@@ -1,21 +1,22 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, useRoutes } from "react-router-dom";
 import LoadingScreen from "./components/LoadingScreen";
-import RootLayout from "./Layout/RootLayout";
-import Docs from "./pages/DocsPage";
-
-// Lazy load stron
+const RootLayout = lazy(() => import("./Layout/RootLayout"));
 const Home = lazy(() => import("./pages/Home"));
+const Docs = lazy(() => import("./pages/DocsPage"));
 
 const AppRoutes = () => {
   const routes = useRoutes([
     {
       path: "/",
       element: <RootLayout />,
-      children: [{ path: "/", element: <Home /> },{
-        path:"docs",
-        element:<Docs/>
-      }],
+      children: [
+        { path: "/", element: <Home /> },
+        {
+          path: "docs",
+          element: <Docs />,
+        },
+      ],
     },
   ]);
 
