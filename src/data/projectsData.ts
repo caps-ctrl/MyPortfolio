@@ -79,7 +79,7 @@ export const projects: ProjectState = {
       title: "E-Commerce Shop",
       Photo: "EComerceShop.png?w=662&format=webp",
       PhotoDark: "EComerceShopDark.png?w=662&format=webp",
-      link: "https://moje-cv-ecomerceshop.vercel.app/",
+      link: "https://ecomerce-front-end-ebon.vercel.app/",
       description:
         "E-commerce platform with product browsing, global state via Redux, and fully functional backend handling authentication, database operations, and product management using Next.js API Routes, Prisma, and PostgreSQL.",
       technologies: [
